@@ -1,6 +1,7 @@
 import { Status } from "@prisma/client";
 import { Badge } from "@radix-ui/themes";
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 const statusMap: Record<
   Status,
@@ -13,7 +14,9 @@ const statusMap: Record<
 
 const IssueStatusBadge = ({ status }: { status: Status }) => {
   return (
-    <Badge color={statusMap[status].color}>{statusMap[status].label}</Badge>
+    <Badge color={statusMap[status].color}>
+      {statusMap[status].label || <Skeleton />}
+    </Badge>
   );
 };
 
